@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"0199a2aa-1111-7000-8000-000000000002"}
+{"type":"turn.started"}
+{"type":"item.started","item":{"id":"item_1","type":"command_execution","command":"git diff --stat 3f1e2d4...HEAD","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_1","type":"command_execution","command":"git diff --stat 3f1e2d4...HEAD","aggregated_output":"fatal: bad revision '3f1e2d4...HEAD'\n","exit_code":128,"status":"failed"}}
+{"type":"turn.failed","error":{"message":"context window exceeded for model gpt-5-codex"}}

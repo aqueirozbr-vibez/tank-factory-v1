@@ -1,0 +1,26 @@
+{
+  "action": "completed",
+  "workflow_run": {
+    "id": 9002,
+    "name": "ci",
+    "status": "completed",
+    "conclusion": "failure",
+    "head_branch": "agent/418",
+    "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "pull_requests": [
+      {
+        "number": 431
+      }
+    ]
+  },
+  "sender": {
+    "login": "github-actions[bot]"
+  },
+  "repository": {
+    "full_name": "acme/atlas-api",
+    "name": "atlas-api",
+    "owner": {
+      "login": "acme"
+    }
+  }
+}

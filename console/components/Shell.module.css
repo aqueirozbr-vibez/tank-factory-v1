@@ -1,0 +1,114 @@
+.frame {
+  min-height: 100vh;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-height: 48px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 24px;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.navLink[aria-current="page"] {
+  border-bottom-color: var(--color-accent);
+}
+
+.navLink:hover {
+  color: var(--color-accent-700);
+}
+
+.key {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 0 var(--space-1);
+  border: 1px solid var(--color-divider);
+  color: var(--color-text-muted);
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  min-width: 18px;
+  padding: 0 var(--space-1);
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--sem-warn) 38%, transparent);
+  background: color-mix(in srgb, var(--sem-warn) 9%, transparent);
+  color: var(--sem-warn);
+}
+
+.pill {
+  font-size: 11.5px;
+  height: var(--chip-height);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 7px;
+  border: 1px solid var(--color-divider);
+}
+
+.pill[data-state="on"] {
+  color: var(--sem-pass);
+  border-color: color-mix(in srgb, var(--sem-pass) 38%, transparent);
+  background: color-mix(in srgb, var(--sem-pass) 9%, transparent);
+}
+
+.pill[data-state="off"] {
+  color: var(--sem-fail);
+  border-color: color-mix(in srgb, var(--sem-fail) 38%, transparent);
+  background: color-mix(in srgb, var(--sem-fail) 9%, transparent);
+}
+
+.pill[data-state="unknown"] {
+  color: var(--sem-neutral);
+  border-style: dashed;
+}
+
+.login {
+  color: var(--color-text-muted);
+}
+
+.main {
+  padding: var(--space-6) 0 var(--space-8);
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0;
+}

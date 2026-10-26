@@ -1,0 +1,28 @@
+{
+  "action": "completed",
+  "check_run": {
+    "id": 9001,
+    "name": "ci",
+    "status": "completed",
+    "conclusion": "failure",
+    "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "check_suite": {
+      "head_branch": "agent/418"
+    },
+    "pull_requests": [
+      {
+        "number": 431
+      }
+    ]
+  },
+  "sender": {
+    "login": "github-actions[bot]"
+  },
+  "repository": {
+    "full_name": "acme/atlas-api",
+    "name": "atlas-api",
+    "owner": {
+      "login": "acme"
+    }
+  }
+}

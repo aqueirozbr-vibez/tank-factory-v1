@@ -1,0 +1,66 @@
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(720px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.current {
+  border: 1px solid var(--color-divider);
+}
+
+.summary {
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  font-size: 12.5px;
+}
+
+.pre {
+  margin: 0;
+  max-height: 220px;
+  overflow: auto;
+  padding: var(--space-3);
+  border-top: 1px solid var(--color-divider);
+  white-space: pre-wrap;
+  font-size: 12px;
+}
+
+.area {
+  width: 100%;
+  resize: vertical;
+  font-size: 12.5px;
+}
+
+.why {
+  margin-left: var(--space-3);
+  font-size: 12px;
+}
+
+.ok {
+  margin: 0;
+  color: var(--sem-pass);
+  font-size: 13px;
+}
+
+.error {
+  margin: 0;
+  color: var(--sem-fail);
+  font-size: 12.5px;
+}

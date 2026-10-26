@@ -1,0 +1,17 @@
+{
+  "action": "opened",
+  "issue": {
+    "number": 500,
+    "title": "Something"
+  },
+  "sender": {
+    "login": "rsouza"
+  },
+  "repository": {
+    "full_name": "acme/atlas-api",
+    "name": "atlas-api",
+    "owner": {
+      "login": "acme"
+    }
+  }
+}

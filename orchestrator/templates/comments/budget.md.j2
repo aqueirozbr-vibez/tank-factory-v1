@@ -1,0 +1,3 @@
+**Budget stop**: this task has spent ${{ task_spent }} of its ${{ task_budget }} budget and the next phase may need up to ${{ phase_cap }}; the installation has spent ${{ daily_spent }} of its ${{ daily_cap }} daily cap.
+
+The task carries `{{ label_budget }}`. A person with write access can raise its budget once, to at most {{ raise_factor }}x, with a reason (`factory budget --task <task> --raise-to <usd> --reason "..."`, or the console); removing `{{ label_needs_human }}` then resumes it from the phase that stopped. Without a raise it stays blocked (PRD Capability 5).

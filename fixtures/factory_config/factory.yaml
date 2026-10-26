@@ -1,0 +1,5 @@
+# Installation defaults. The PRD's protected set and the lockfiles are always
+# protected; entries here are additions only.
+concurrency_n: 3
+protected_paths: []
+dependency_manifests: ["pyproject.toml", "package.json"]

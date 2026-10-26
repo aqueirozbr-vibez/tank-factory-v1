@@ -1,0 +1,27 @@
+**Review stopped**: verdict `{{ verdict }}`, conformance {{ conformance }}.
+{% if why %}
+Why a person decides: {{ why }}.
+{% endif %}
+{% if strongest %}
+Strongest finding: {{ strongest.requirement_id }} ({{ strongest.equation }}).
+{% endif %}
+{% if findings %}
+
+Findings:
+{% for item in findings %}
+- {{ item.requirement_id }} {{ item.severity }}{% if item.location %} at `{{ item.location }}`{% endif %}: {{ item.problem | nomention }} (score {{ item.score }})
+{% endfor %}
+{% endif %}
+{% if dismissed %}
+
+Dismissed by Non-goals:
+{% for item in dismissed %}
+- {{ item.requirement_id }}: "{{ item.dismissed_by }}"
+{% endfor %}
+{% endif %}
+{% if prior %}
+
+Prior verdicts: {{ prior | join(", ") }}.
+{% endif %}
+
+A person with write access decides: fix the findings on the branch or close the issue, then remove `{{ label_needs_human }}` to resume.

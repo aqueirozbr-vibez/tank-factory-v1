@@ -1,0 +1,27 @@
+{
+  "action": "submitted",
+  "review": {
+    "id": 77,
+    "state": "changes_requested",
+    "user": {
+      "login": "mlima"
+    }
+  },
+  "pull_request": {
+    "number": 431,
+    "head": {
+      "ref": "agent/418",
+      "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  },
+  "sender": {
+    "login": "mlima"
+  },
+  "repository": {
+    "full_name": "acme/atlas-api",
+    "name": "atlas-api",
+    "owner": {
+      "login": "acme"
+    }
+  }
+}

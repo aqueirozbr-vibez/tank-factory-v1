@@ -1,0 +1,26 @@
+{
+  "action": "closed",
+  "number": 431,
+  "pull_request": {
+    "number": 431,
+    "merged": true,
+    "head": {
+      "ref": "agent/418",
+      "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "base": {
+      "ref": "main"
+    },
+    "merge_commit_sha": "cccccccccccccccccccccccccccccccccccccccc"
+  },
+  "sender": {
+    "login": "rsouza"
+  },
+  "repository": {
+    "full_name": "acme/atlas-api",
+    "name": "atlas-api",
+    "owner": {
+      "login": "acme"
+    }
+  }
+}

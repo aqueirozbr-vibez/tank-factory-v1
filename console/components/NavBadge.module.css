@@ -1,0 +1,10 @@
+.badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  min-width: 18px;
+  padding: 0 var(--space-1);
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--sem-warn) 38%, transparent);
+  background: color-mix(in srgb, var(--sem-warn) 9%, transparent);
+  color: var(--sem-warn);
+}

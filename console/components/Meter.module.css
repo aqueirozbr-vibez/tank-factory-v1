@@ -1,0 +1,71 @@
+.meter {
+  --meter-role: var(--sem-info);
+  display: grid;
+  gap: var(--space-2);
+  min-width: 220px;
+}
+
+.info {
+  --meter-role: var(--sem-info);
+}
+
+.warn {
+  --meter-role: var(--sem-warn);
+}
+
+.fail {
+  --meter-role: var(--sem-fail);
+}
+
+.error {
+  --meter-role: var(--sem-fail);
+}
+
+.loading {
+  --meter-role: var(--sem-neutral);
+}
+
+.head,
+.foot {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-size: 12.5px;
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.numbers {
+  margin-left: auto;
+}
+
+.bar {
+  position: relative;
+  height: var(--meter-height);
+  border: 1px solid var(--color-divider);
+  background: color-mix(in srgb, var(--meter-role) 9%, transparent);
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  background: var(--meter-role);
+}
+
+.tick {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 80%;
+  width: 1px;
+  background: var(--color-text);
+}
+
+.glyph {
+  color: var(--meter-role);
+}

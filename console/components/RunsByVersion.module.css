@@ -1,0 +1,36 @@
+.section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.group {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.version {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.current {
+  padding: 1px var(--space-2);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-700);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

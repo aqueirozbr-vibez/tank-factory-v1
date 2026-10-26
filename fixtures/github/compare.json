@@ -1,0 +1,13 @@
+{
+  "status": "ahead",
+  "files": [
+    {
+      "filename": ".factory/roster.yaml",
+      "status": "modified"
+    },
+    {
+      "filename": "README.md",
+      "status": "added"
+    }
+  ]
+}

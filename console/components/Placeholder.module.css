@@ -1,0 +1,14 @@
+.frame {
+  padding: var(--space-4);
+}
+
+.list {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-4);
+  line-height: 1.5;
+}
+
+.meta {
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}

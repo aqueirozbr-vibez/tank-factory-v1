@@ -1,0 +1,9 @@
+# Quality commands run by code in this order: format, lint, typecheck, focused
+# tests (PRD §Capability 3). Argv lists, never shell strings. The startup
+# self-test runs each against a known-failing fixture and refuses to start if
+# any exits 0. This is the Python template; each installation sets its own.
+format: ["uv", "run", "ruff", "format", "--check", "."]
+lint: ["uv", "run", "ruff", "check", "."]
+typecheck: ["uv", "run", "mypy", "."]
+test: ["uv", "run", "pytest", "-q"]          # focused test ids are appended
+full_suite: ["uv", "run", "pytest", "-q"]

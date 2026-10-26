@@ -1,0 +1,76 @@
+.section {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.summary {
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.table th,
+.table td {
+  font-size: 12.5px;
+  vertical-align: top;
+}
+
+.num {
+  text-align: right !important;
+}
+
+.problem {
+  max-width: 360px;
+  overflow-wrap: anywhere;
+}
+
+.quote {
+  display: block;
+  margin-top: var(--space-1);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.quote::before {
+  content: "Non-goals: “";
+}
+
+.quote::after {
+  content: "”";
+}
+
+.adjust {
+  white-space: nowrap;
+}
+
+.notes {
+  display: block;
+  font-size: 11px;
+  white-space: normal;
+  max-width: 260px;
+}
+
+.blocks td:first-child {
+  box-shadow: inset 3px 0 0 var(--sem-fail);
+}
+
+/* The UI context asks for 60% opacity; under WCAG AA the chip and the link fell under 4.5:1
+   in dark, so the row is muted ink instead and keeps its chips and links at full colour. */
+.dismissed td {
+  color: var(--color-text-muted);
+}

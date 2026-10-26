@@ -1,0 +1,55 @@
+Factory PR for #{{ issue_number }} ({{ task_id }}), attempt {{ attempt }}, factory {{ factory_version }}.
+
+**Spec**: [`{{ spec_rel }}`]({{ spec_url }}) at `{{ spec_sha }}` · risk `{{ risk }}`{% if risk_score is not none %} (score {{ risk_score }}){% endif %} · branch `{{ branch }}` at `{{ head_sha }}`.
+
+**Review**: {% if verdict %}verdict `{{ verdict }}`, conformance {{ conformance }}{% if strongest %}; strongest finding {{ strongest.requirement_id }} ({{ strongest.equation }}){% endif %}; {{ revisions }} revision round(s){% else %}not recorded{% endif %}.
+
+### Gates
+
+| Gate | Attempt | Result | Evidence |
+| --- | --- | --- | --- |
+{% for gate in gates %}
+| {{ gate.gate }} | {{ gate.attempt }} | {{ "pass" if gate.passed else "fail" }} | {{ gate.evidence | nomention | cell }} |
+{% endfor %}
+
+### Phases
+
+| Phase | Owner | Harness | Model | Attempt | Status | Tokens in / out / cache read / cache write | Cost (USD) | Session |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+{% for phase in phases %}
+| {{ phase.name }} | {{ phase.owner }} | {{ phase.harness }} | {{ phase.model_id }} | {{ phase.attempt }} | {{ phase.status }} | {{ phase.tokens_in }} / {{ phase.tokens_out }} / {{ phase.tokens_cache_read }} / {{ phase.tokens_cache_write }} | {{ phase.cost }} | {{ phase.session_id | cell }} |
+{% endfor %}
+
+Total cost: ${{ total_cost }} over {{ phases | length }} phase rows; tokens in {{ total_tokens_in }}, out {{ total_tokens_out }}.
+
+### Roles
+
+| Role | Harness | Version | Model |
+| --- | --- | --- | --- |
+{% for role in roles %}
+| {{ role.role }} | {{ role.harness }} | {{ role.harness_version }} | {{ role.model_id }} |
+{% endfor %}
+{% if advisory %}
+
+### Advisory findings
+
+{% for item in advisory %}
+- {{ item.requirement_id }} {{ item.severity }}{% if item.location %} at `{{ item.location }}`{% endif %}: {{ item.problem | nomention }} (score {{ item.score }})
+{% endfor %}
+{% endif %}
+{% if dismissed %}
+
+### Dismissed by Non-goals
+
+{% for item in dismissed %}
+- {{ item.requirement_id }}: "{{ item.dismissed_by }}"
+{% endfor %}
+{% endif %}
+
+<details><summary>Spec</summary>
+
+{{ spec_text | nomention }}
+
+</details>
+
+Rendered by the factory from its trace; no agent wrote this text.

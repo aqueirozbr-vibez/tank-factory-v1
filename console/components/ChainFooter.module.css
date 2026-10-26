@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--row-height);
+  border-top: 1px solid var(--color-divider);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+}
+
+.footer[data-verified="true"] span {
+  color: var(--sem-pass);
+}
+
+.footer[data-verified="false"] {
+  color: var(--sem-fail);
+}

@@ -1,0 +1,51 @@
+.flag {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-2);
+  align-items: baseline;
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-divider);
+  font-size: 12.5px;
+}
+
+.stuck {
+  --flag-role: var(--sem-fail);
+  border-color: color-mix(in srgb, var(--flag-role) 38%, transparent);
+  background: color-mix(in srgb, var(--flag-role) 9%, transparent);
+  color: var(--flag-role);
+}
+
+.clear {
+  --flag-role: var(--sem-neutral);
+  color: var(--flag-role);
+}
+
+.glyph {
+  font-family: var(--font-mono);
+}
+
+.stuck .glyph {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.hint {
+  grid-column: 2;
+  font-size: 11px;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stuck .glyph {
+    animation: none;
+  }
+}

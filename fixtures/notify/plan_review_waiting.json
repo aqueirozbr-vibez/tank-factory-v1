@@ -1,0 +1,21 @@
+{
+  "text": "Plan review waiting: #418 Invoice due date",
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Plan review waiting: #418 Invoice due date*\n*Task:* acme/atlas-api#418\n*Risk:* risk:governed\n*Spec:* specs/418-invoice-due-date.md\n*Approver:* a CODEOWNER of `src/billing/` (mlima, rsouza)\n*Label to add:* `factory:plan-approved` on the issue"
+      }
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "Notification only. The approval is the `factory:plan-approved` label on GitHub."
+        }
+      ]
+    }
+  ]
+}

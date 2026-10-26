@@ -1,0 +1,61 @@
+# The authorisation decision table (PRD §Capability 6; TRD §6.2; architecture.md · Invariants).
+#
+# A row is (permission, action, condition) → allow. Anything absent is denied:
+# an unknown permission, an unknown action, a condition that does not hold.
+# `factory authz` generates orchestrator/authz/authz.py and console/lib/authz.ts
+# from this file; both carry this file's SHA-256 and the orchestrator refuses to
+# start when the committed module no longer matches the table.
+version: 1
+
+# GitHub collaborator permission levels the table knows. GitHub answers one of
+# these for a signed-in user; "none" and anything else deny every action.
+permissions: [read, triage, write, maintain, admin]
+
+actions:
+  read: read every screen and endpoint marked read; never a secret, a user token or another session
+  plan_approve: add factory:plan-approved to a risk:high task (the label is the approval record)
+  governed_approve: add factory:plan-approved to a risk:governed task whose governed path the actor owns
+  cancel: remove factory:ready from a task
+  resume: remove factory:needs-human from a blocked task (the resume rule per blocked_reason still applies)
+  risk_override: raise a task's risk class to risk:high or risk:governed before pr_open
+  budget_raise: raise one task's budget once, by at most 2x, with a reason
+  concurrency: set N between 1 and 10 with a reason
+  admissions: pause or resume admissions and clear an open incident
+  kill_switch: turn the factory off or on with a reason
+  audit_decide: record one audit decision per task per month
+  config_pr: propose a .factory/ change as a pull request under the user's token
+  eval_run: start an eval replay on eval/scratch
+  export: download a task's signed JSONL export
+
+conditions:
+  always: no further check
+  codeowner: the actor is a CODEOWNER of the task's governed path at main
+
+rules:
+  - permission: [read, triage, write, maintain, admin]
+    action: read
+    condition: always
+  - permission: [write, maintain, admin]
+    action: [plan_approve, cancel, resume, risk_override, budget_raise, concurrency,
+             admissions, kill_switch, audit_decide, config_pr, eval_run, export]
+    condition: always
+  - permission: [write, maintain, admin]
+    action: governed_approve
+    condition: codeowner
+
+# Expected decisions, tested row by row in pytest and in vitest (the same cases).
+cases:
+  - {permission: read, action: read, codeowner: false, allow: true}
+  - {permission: triage, action: read, codeowner: false, allow: true}
+  - {permission: read, action: budget_raise, codeowner: false, allow: false}
+  - {permission: triage, action: cancel, codeowner: false, allow: false}
+  - {permission: write, action: plan_approve, codeowner: false, allow: true}
+  - {permission: write, action: governed_approve, codeowner: false, allow: false}
+  - {permission: write, action: governed_approve, codeowner: true, allow: true}
+  - {permission: admin, action: governed_approve, codeowner: false, allow: false}
+  - {permission: maintain, action: kill_switch, codeowner: false, allow: true}
+  - {permission: admin, action: export, codeowner: false, allow: true}
+  - {permission: none, action: read, codeowner: false, allow: false}
+  - {permission: owner, action: read, codeowner: false, allow: false}
+  - {permission: write, action: merge, codeowner: true, allow: false}
+  - {permission: "", action: read, codeowner: false, allow: false}

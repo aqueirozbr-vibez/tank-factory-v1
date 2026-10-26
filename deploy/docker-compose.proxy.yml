@@ -1,0 +1,45 @@
+# The model proxy for one installation (TRD §2.0, §3.4): LiteLLM holds the vendor
+# keys and issues per-phase virtual keys; Postgres stores the keys and their spend.
+# Started by `factory proxy up`; folded into the full compose bundle in unit 44.
+services:
+  litellm-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: litellm
+      POSTGRES_PASSWORD: litellm
+      POSTGRES_DB: litellm
+    volumes:
+      - litellm-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U litellm -d litellm"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    command: ["--config", "/config/config.yaml", "--port", "4000"]
+    ports:
+      - "127.0.0.1:${FACTORY_PROXY_PORT:-4000}:4000"
+    environment:
+      LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY}
+      DATABASE_URL: postgresql://litellm:litellm@litellm-db:5432/litellm
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      LITELLM_LOG: WARNING
+    volumes:
+      - ./litellm/config.yaml:/config/config.yaml:ro
+    networks:
+      default: {}
+      factory-tasks:
+        aliases: [proxy]
+    depends_on:
+      litellm-db:
+        condition: service_healthy
+
+volumes:
+  litellm-db:
+
+networks:
+  factory-tasks:
+    external: true  # created --internal by `factory proxy up`

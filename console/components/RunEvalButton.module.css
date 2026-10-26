@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.pick {
+  min-width: 240px;
+}
+
+.why {
+  font-size: 12px;
+}
+
+.ok {
+  color: var(--sem-pass);
+  font-size: 12.5px;
+}
+
+.error {
+  color: var(--sem-fail);
+  font-size: 12.5px;
+}

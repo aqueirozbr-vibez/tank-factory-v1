@@ -1,0 +1,63 @@
+.tile {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  min-height: 150px;
+}
+
+.label {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.value {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.trend {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-1);
+  height: 24px;
+}
+
+.bar {
+  flex: 1;
+  background: color-mix(in srgb, var(--color-text) 22%, transparent);
+}
+
+.barLast {
+  background: var(--color-accent);
+}
+
+.status {
+  margin: 0;
+  font-size: 12.5px;
+}
+
+.pass {
+  color: var(--sem-pass);
+}
+
+.fail {
+  color: var(--sem-fail);
+}
+
+.neutral {
+  color: var(--sem-neutral);
+}
+
+.target,
+.note {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+}

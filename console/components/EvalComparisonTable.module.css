@@ -1,0 +1,55 @@
+/* Fixed columns, so every version's table puts Overall, the classes and the delta in the same
+   place; the class columns (the same set for every version) split the middle. */
+.table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table th:first-child {
+  width: 150px;
+}
+
+.table th:nth-child(2) {
+  width: 220px;
+}
+
+.table th:last-child {
+  width: 180px;
+}
+
+.table th,
+.table td {
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.caption {
+  caption-side: top;
+  text-align: left;
+  padding: var(--space-1) 0;
+  font-size: 11px;
+}
+
+.num {
+  text-align: right !important;
+}
+
+.ref {
+  font-size: 11px;
+}
+
+.delta[data-role="pass"] {
+  color: var(--sem-pass);
+}
+
+.delta[data-role="fail"] {
+  color: var(--sem-fail);
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}

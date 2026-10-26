@@ -1,0 +1,167 @@
+"""The model proxy's admin API: per-phase virtual keys and their spend (TRD §3.4, §6.3).
+
+LiteLLM holds the vendor keys; the orchestrator holds the master key and
+creates one key per agent phase with ``max_budget`` and a duration, reads
+its spend at the end and revokes it. The secret key goes to the agent
+environment only; the trace records the proxy's hashed token.
+"""
+
+import hashlib
+from dataclasses import dataclass
+
+import httpx
+
+from orchestrator.errors import FactoryError
+from orchestrator.models.config import Roster
+
+PROVIDER_FOR_VENDOR = {"anthropic": "anthropic", "openai": "openai"}
+KEY_ENV_FOR_VENDOR = {"anthropic": "ANTHROPIC_API_KEY", "openai": "OPENAI_API_KEY"}
+CAP_MESSAGES = ("budget", "exceededbudget", "max_budget")
+
+
+class ProxyError(FactoryError):
+    code = "proxy_error"
+
+
+@dataclass(frozen=True)
+class VirtualKey:
+    key: str
+    key_id: str
+    expires: str | None
+
+
+@dataclass(frozen=True)
+class KeyInfo:
+    spend: float
+    max_budget: float | None
+    expires: str | None
+    blocked: bool
+
+
+def key_id_for(data: dict[str, object], key: str) -> str:
+    """The proxy's hashed token when it returns one, else a short digest; never the secret."""
+    token = data.get("token") or data.get("token_id")
+    if isinstance(token, str) and token:
+        return token
+    return hashlib.sha256(key.encode("utf-8")).hexdigest()[:16]
+
+
+class ProxyAdmin:
+    def __init__(
+        self, base_url: str, master_key: str, *, http: httpx.AsyncClient | None = None
+    ) -> None:
+        self.base_url = base_url.rstrip("/")
+        self._headers = {"Authorization": f"Bearer {master_key}"}
+        self._http = http or httpx.AsyncClient(timeout=15.0)
+
+    async def _request(
+        self,
+        method: str,
+        path: str,
+        *,
+        json: dict[str, object] | None = None,
+        params: dict[str, str] | None = None,
+    ) -> httpx.Response:
+        try:
+            response = await self._http.request(
+                method, f"{self.base_url}{path}", headers=self._headers, json=json, params=params
+            )
+        except httpx.HTTPError as exc:
+            raise ProxyError(f"model proxy unreachable: {exc}") from exc
+        if response.status_code >= 400:
+            raise ProxyError(
+                f"model proxy {method} {path} failed ({response.status_code}):"
+                f" {response.text[:200]}",
+                detail={"status": response.status_code},
+            )
+        return response
+
+    async def health(self) -> bool:
+        try:
+            await self._request("GET", "/health/liveliness")
+        except ProxyError:
+            return False
+        return True
+
+    async def create_key(
+        self,
+        *,
+        task_id: str,
+        phase_id: str,
+        role: str,
+        max_budget_usd: float,
+        duration_s: int,
+        models: list[str],
+    ) -> VirtualKey:
+        body: dict[str, object] = {
+            "max_budget": round(max_budget_usd, 4),
+            "duration": f"{max(60, int(duration_s))}s",
+            "models": models,
+            "metadata": {"task_id": task_id, "phase_id": phase_id, "role": role},
+        }
+        response = await self._request("POST", "/key/generate", json=body)
+        data = response.json()
+        key = data.get("key")
+        if not isinstance(key, str) or not key:
+            raise ProxyError("model proxy returned no key")
+        expires = data.get("expires")
+        return VirtualKey(key, key_id_for(data, key), str(expires) if expires else None)
+
+    async def key_info(self, key: str) -> KeyInfo:
+        response = await self._request("GET", "/key/info", params={"key": key})
+        info = response.json().get("info") or {}
+        max_budget = info.get("max_budget")
+        return KeyInfo(
+            spend=float(info.get("spend") or 0.0),
+            max_budget=float(max_budget) if max_budget is not None else None,
+            expires=str(info["expires"]) if info.get("expires") else None,
+            blocked=bool(info.get("blocked", False)),
+        )
+
+    async def delete_key(self, key: str) -> bool:
+        try:
+            await self._request("POST", "/key/delete", json={"keys": [key]})
+        except ProxyError as exc:
+            status = exc.detail.get("status")
+            if status in (400, 404):
+                return False
+            raise
+        return True
+
+    async def aclose(self) -> None:
+        await self._http.aclose()
+
+
+def looks_like_cap(error: str | None) -> bool:
+    text = (error or "").lower()
+    return "429" in text or any(marker in text for marker in CAP_MESSAGES)
+
+
+def litellm_config(roster: Roster) -> str:
+    """The proxy configuration for a roster: one entry per model id, keys from the proxy env."""
+    entries: dict[str, tuple[str, str]] = {}
+    for role in (roster.planner, roster.builder, roster.reviewer):
+        vendor = role.vendor_name
+        entries[role.model] = (PROVIDER_FOR_VENDOR[vendor], KEY_ENV_FOR_VENDOR[vendor])
+    lines = [
+        "# Generated by the factory from .factory/roster.yaml (orchestrator/budget/proxy.py).",
+        "# Vendor keys come from the proxy container's environment and nowhere else.",
+        "model_list:",
+    ]
+    for model, (provider, key_env) in sorted(entries.items()):
+        lines += [
+            f"  - model_name: {model}",
+            "    litellm_params:",
+            f"      model: {provider}/{model}",
+            f"      api_key: os.environ/{key_env}",
+        ]
+    lines += [
+        "litellm_settings:",
+        "  drop_params: true",
+        "  num_retries: 0",
+        "general_settings:",
+        "  master_key: os.environ/LITELLM_MASTER_KEY",
+        "  database_url: os.environ/DATABASE_URL",
+        "  store_model_in_db: false",
+    ]
+    return "\n".join(lines) + "\n"

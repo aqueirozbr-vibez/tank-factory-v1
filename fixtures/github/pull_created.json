@@ -1,0 +1,13 @@
+{
+  "number": 431,
+  "state": "open",
+  "title": "feat(billing): invoice due_date (#418)",
+  "head": {
+    "ref": "agent/418",
+    "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "base": {
+    "ref": "main"
+  },
+  "html_url": "https://github.com/acme/atlas-api/pull/431"
+}

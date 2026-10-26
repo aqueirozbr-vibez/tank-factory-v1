@@ -1,0 +1,31 @@
+.section {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.table th,
+.table td {
+  font-size: 12.5px;
+  vertical-align: top;
+}
+
+.evidence {
+  max-width: 420px;
+  overflow-wrap: anywhere;
+}
+
+.finding {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}

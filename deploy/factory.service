@@ -1,0 +1,19 @@
+# The installation under one systemd unit (TRD §2.0 · Packaging and supervision).
+# Installed by `factory install` to /etc/systemd/system/factory.service.
+[Unit]
+Description=Tank Factory v1 (docker compose)
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/factory
+EnvironmentFile=/etc/factory/factory.env
+ExecStart=/usr/bin/docker compose -f /opt/factory/deploy/docker-compose.yml --env-file /etc/factory/factory.env up -d --remove-orphans
+ExecStop=/usr/bin/docker compose -f /opt/factory/deploy/docker-compose.yml --env-file /etc/factory/factory.env down
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target

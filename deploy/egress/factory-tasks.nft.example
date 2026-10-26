@@ -1,0 +1,11 @@
+#!/usr/sbin/nft -f
+# Rendered by orchestrator.watchdogs.nftables_rules; applied on the VM host.
+table inet factory {
+  chain docker-user {
+    type filter hook forward priority -10; policy accept;
+    iifname "br-factorytasks0" ct state established,related accept
+    iifname "br-factorytasks0" ip daddr 172.30.0.2 tcp dport 4000 accept
+    iifname "br-factorytasks0" log prefix "factory-egress " level warn
+    iifname "br-factorytasks0" drop
+  }
+}

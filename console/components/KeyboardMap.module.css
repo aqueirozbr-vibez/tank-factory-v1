@@ -1,0 +1,25 @@
+.dialog {
+  max-width: 520px;
+}
+
+.list {
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: var(--space-3);
+  min-height: 24px;
+  align-items: baseline;
+}
+
+.row dt {
+  font-size: 12.5px;
+}
+
+.row dd {
+  margin: 0;
+}

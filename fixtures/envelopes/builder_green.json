@@ -1,0 +1,55 @@
+{
+  "session_id": "fake-builder-0001",
+  "tool_calls": [
+    {
+      "tool": "Read",
+      "args": {"file_path": "src/billing/invoice.py"},
+      "result_snippet": "214 lines",
+      "ok": true,
+      "duration_ms": 12
+    },
+    {
+      "tool": "Edit",
+      "args": {
+        "file_path": "src/billing/invoice.py",
+        "old_string": "class Invoice:",
+        "new_string": "class Invoice:\n    due_date: date | None = None"
+      },
+      "result_snippet": "applied 1 hunk",
+      "ok": true,
+      "duration_ms": 38
+    },
+    {
+      "tool": "Bash",
+      "args": {"command": "uv run pytest tests/unit/test_invoice_due_date.py -q"},
+      "result_snippet": "2 passed in 0.31s",
+      "ok": true,
+      "duration_ms": 2140
+    }
+  ],
+  "effects": [
+    {
+      "write": "src/billing/invoice.py",
+      "content": "from datetime import date, timedelta\n\n\nclass Invoice:\n    def __init__(self, issued_at: date, terms_days: int) -> None:\n        self.issued_at = issued_at\n        self.terms_days = terms_days\n\n    @property\n    def due_date(self) -> date:\n        return self.issued_at + timedelta(days=self.terms_days)\n"
+    },
+    {
+      "write": "tests/unit/test_invoice_due_date.py",
+      "content": "from datetime import date\n\nfrom src.billing.invoice import Invoice\n\n\ndef test_due_date_adds_terms() -> None:\n    invoice = Invoice(date(2026, 10, 1), 30)\n    assert invoice.due_date == date(2026, 10, 31)\n\n\ndef test_zero_terms_is_same_day() -> None:\n    assert Invoice(date(2026, 10, 1), 0).due_date == date(2026, 10, 1)\n"
+    }
+  ],
+  "envelope": {
+    "status": "success",
+    "summary": "Add due_date to Invoice and cover it with two unit tests",
+    "changed_files": ["src/billing/invoice.py", "tests/unit/test_invoice_due_date.py"],
+    "tests_added": ["tests/unit/test_invoice_due_date.py"],
+    "commit_message": "feat(billing): invoice due_date (#418)",
+    "notes_for_next_agent": "due_date is a computed property; no migration was needed."
+  },
+  "usage": {
+    "input_tokens": 18450,
+    "output_tokens": 2210,
+    "cache_read_tokens": 12000,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.41
+  }
+}

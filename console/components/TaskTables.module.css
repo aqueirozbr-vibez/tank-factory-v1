@@ -1,0 +1,75 @@
+.section {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+/* Fixed columns shared by Needs a human and Running and queued, so the two stacked tables line
+   up: Task, Title, the state column and Risk; the numeric columns split the rest. */
+.table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table th:nth-child(1) {
+  width: 96px;
+}
+
+.table th:nth-child(2) {
+  width: 32%;
+}
+
+.table th:nth-child(3) {
+  width: 220px;
+}
+
+.table th:nth-child(4) {
+  width: 170px;
+}
+
+.table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table th,
+.table td {
+  height: var(--row-height);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.num {
+  text-align: right !important;
+}
+
+.queueNote {
+  margin-left: var(--space-2);
+  font-size: 12px;
+}
+
+.meters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+}

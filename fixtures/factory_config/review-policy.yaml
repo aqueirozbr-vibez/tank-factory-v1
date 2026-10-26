@@ -1,0 +1,35 @@
+# Review verdict policy (PRD §Review verdict policy).
+# Each finding is scored by severity and adjusted for its spec link, evidence
+# and scope; the blocking score is the strongest adjusted finding; conformance
+# is 100 minus the blocking score. human_decision_needed is a class, not a score.
+version: 1
+severities:
+  Blocker: 100
+  Major: 70
+  Minor: 30
+  Nit: 10
+  Unverifiable: 0
+spec_link:
+  ac_or_scope: 1.0              # names a numbered AC or Scope item
+  constraint_or_adr: 0.9        # names a Constraint or ADR
+  none: 0.5
+evidence:
+  location_and_reproduction: 1.0   # file:line plus a failing test or command
+  location_only: 0.8               # file:line only
+  assertion_only: 0.4
+scope:
+  inside: 1.0
+  non_goals: 0                  # dismissed; the Non-goals line is quoted
+thresholds:
+  accept_conformance: 70        # >= 70 accepted; below: revision_needed
+  revision_cap: 2
+human_always:
+  - security_blocker
+  - scope_expansion
+  - ambiguous_ac
+  - unopenable_evidence
+  - third_revision
+test_integrity:
+  no_assertion: Major
+  asserts_constant: Major
+  special_cases_input: Blocker

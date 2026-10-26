@@ -1,0 +1,21 @@
+{
+  "total_count": 2,
+  "check_runs": [
+    {
+      "id": 9001,
+      "name": "ci",
+      "status": "completed",
+      "conclusion": "failure",
+      "completed_at": "2026-10-24T12:00:50Z",
+      "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "id": 9000,
+      "name": "ci",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-23T08:00:00Z",
+      "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  ]
+}

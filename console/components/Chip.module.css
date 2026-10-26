@@ -1,0 +1,63 @@
+.chip {
+  --chip-role: var(--sem-neutral);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: var(--chip-height);
+  padding: 0 7px;
+  border: 1px solid color-mix(in srgb, var(--chip-role) 38%, transparent);
+  background: color-mix(in srgb, var(--chip-role) 9%, transparent);
+  color: var(--chip-role);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.pass {
+  --chip-role: var(--sem-pass);
+}
+
+.fail {
+  --chip-role: var(--sem-fail);
+}
+
+.warn {
+  --chip-role: var(--sem-warn);
+}
+
+.info {
+  --chip-role: var(--sem-info);
+}
+
+.neutral {
+  --chip-role: var(--sem-neutral);
+}
+
+.solid {
+  background: var(--chip-role);
+  color: var(--color-bg);
+  border-color: var(--chip-role);
+}
+
+.dashed {
+  border-style: dashed;
+}
+
+.label {
+  border-color: color-mix(in srgb, var(--chip-role) 45%, transparent);
+}
+
+.disabled {
+  opacity: 0.45;
+}
+
+.glyph {
+  font-size: 11px;
+  letter-spacing: -0.02em;
+}
+
+.value {
+  letter-spacing: 0;
+}

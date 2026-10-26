@@ -1,0 +1,34 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "\"python3\" \"/opt/factory/hooks/factory_pretooluse.py\"",
+            "timeout": 15,
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash|Write|Edit|MultiEdit|NotebookEdit"
+      }
+    ]
+  },
+  "permissions": {
+    "deny": [
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(git commit)",
+      "Bash(git commit *)",
+      "Bash(gh)",
+      "Bash(gh *)",
+      "Bash(curl)",
+      "Bash(curl *)",
+      "Bash(wget)",
+      "Bash(wget *)",
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "WebFetch",
+      "WebSearch"
+    ]
+  }
+}

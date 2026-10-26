@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.round {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-divider);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.round[aria-current="page"] {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+}
+
+.round:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}

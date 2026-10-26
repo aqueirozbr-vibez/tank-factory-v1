@@ -1,0 +1,36 @@
+.section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.strata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.stratum {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12.5px;
+}
+
+.count {
+  font-size: 20px;
+}
+
+.table th,
+.table td {
+  font-size: 12.5px;
+  vertical-align: top;
+}

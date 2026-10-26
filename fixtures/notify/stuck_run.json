@@ -1,0 +1,21 @@
+{
+  "text": "Stuck run: #418 Invoice due date",
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Stuck run: #418 Invoice due date*\n*Task:* acme/atlas-api#418\n*Process:* claude\n*Idle:* 16 min (flagged after 15)\n*Last event:* 2026-10-24T12:00:00.000+00:00"
+      }
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "Notification only. The phase timeout governs the kill."
+        }
+      ]
+    }
+  ]
+}

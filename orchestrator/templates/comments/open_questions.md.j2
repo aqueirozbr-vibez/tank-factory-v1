@@ -1,0 +1,17 @@
+{% if language == "pt-BR" -%}
+Antes de o build começar, uma pessoa com acesso de escrita precisa responder:
+
+{% for question in questions %}
+{{ loop.index }}. {{ question | nomention }}
+{% endfor %}
+
+Responda nesta issue e remova a etiqueta `{{ label_needs_human }}`; o planner volta a rodar com as respostas.
+{%- else -%}
+Before the build can start, a person with write access needs to answer:
+
+{% for question in questions %}
+{{ loop.index }}. {{ question | nomention }}
+{% endfor %}
+
+Reply in this issue and remove the `{{ label_needs_human }}` label; the planner runs again with the answers.
+{%- endif %}

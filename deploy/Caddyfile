@@ -1,0 +1,28 @@
+# The edge (TRD §2.0, §3.1): an internal listener for the console (phase 5) and /healthz,
+# with TLS from Caddy's internal CA, and a public listener that routes exactly one path,
+# /webhooks/github, to the orchestrator. Everything else on the public listener is 404
+# before it reaches any service. Hosts come from /etc/factory/factory.env.
+{
+	email {$FACTORY_ACME_EMAIL:admin@localhost}
+}
+
+{$FACTORY_CONSOLE_HOST:factory.internal} {
+	tls internal
+	handle /healthz {
+		reverse_proxy orchestrator:8080
+	}
+	handle {
+		respond "factory console: installed in phase 5" 503
+	}
+}
+
+{$FACTORY_PUBLIC_HOST:localhost}:443 {
+	handle /webhooks/github {
+		reverse_proxy orchestrator:8080 {
+			header_up X-Forwarded-For {remote_host}
+		}
+	}
+	handle {
+		respond 404
+	}
+}

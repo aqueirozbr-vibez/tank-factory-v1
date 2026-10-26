@@ -1,0 +1,9 @@
+{
+  "token": "ghs_FAKE_installation_token",
+  "expires_at": "2023-11-14T23:13:20Z",
+  "permissions": {
+    "contents": "write",
+    "issues": "write",
+    "pull_requests": "write"
+  }
+}

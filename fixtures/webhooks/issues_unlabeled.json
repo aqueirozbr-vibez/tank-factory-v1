@@ -1,0 +1,21 @@
+{
+  "action": "unlabeled",
+  "issue": {
+    "number": 418,
+    "title": "Invoice due date",
+    "state": "open"
+  },
+  "label": {
+    "name": "factory:needs-human"
+  },
+  "sender": {
+    "login": "mlima"
+  },
+  "repository": {
+    "full_name": "acme/atlas-api",
+    "name": "atlas-api",
+    "owner": {
+      "login": "acme"
+    }
+  }
+}

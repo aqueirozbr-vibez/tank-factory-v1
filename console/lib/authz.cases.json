@@ -1,0 +1,86 @@
+[
+  {
+    "permission": "read",
+    "action": "read",
+    "codeowner": false,
+    "allow": true
+  },
+  {
+    "permission": "triage",
+    "action": "read",
+    "codeowner": false,
+    "allow": true
+  },
+  {
+    "permission": "read",
+    "action": "budget_raise",
+    "codeowner": false,
+    "allow": false
+  },
+  {
+    "permission": "triage",
+    "action": "cancel",
+    "codeowner": false,
+    "allow": false
+  },
+  {
+    "permission": "write",
+    "action": "plan_approve",
+    "codeowner": false,
+    "allow": true
+  },
+  {
+    "permission": "write",
+    "action": "governed_approve",
+    "codeowner": false,
+    "allow": false
+  },
+  {
+    "permission": "write",
+    "action": "governed_approve",
+    "codeowner": true,
+    "allow": true
+  },
+  {
+    "permission": "admin",
+    "action": "governed_approve",
+    "codeowner": false,
+    "allow": false
+  },
+  {
+    "permission": "maintain",
+    "action": "kill_switch",
+    "codeowner": false,
+    "allow": true
+  },
+  {
+    "permission": "admin",
+    "action": "export",
+    "codeowner": false,
+    "allow": true
+  },
+  {
+    "permission": "none",
+    "action": "read",
+    "codeowner": false,
+    "allow": false
+  },
+  {
+    "permission": "owner",
+    "action": "read",
+    "codeowner": false,
+    "allow": false
+  },
+  {
+    "permission": "write",
+    "action": "merge",
+    "codeowner": true,
+    "allow": false
+  },
+  {
+    "permission": "",
+    "action": "read",
+    "codeowner": false,
+    "allow": false
+  }
+]

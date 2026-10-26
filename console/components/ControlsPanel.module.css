@@ -1,0 +1,76 @@
+.card {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4);
+}
+
+.control {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12.5px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.incident {
+  margin-left: auto;
+  color: var(--sem-fail);
+  font-size: 11px;
+}
+
+/* Every control reads the same way: its inputs fill one row, the button sits right-aligned on
+   the row below, whatever the rail's width. */
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.n {
+  flex: 0 0 72px;
+}
+
+.reason {
+  flex: 1 1 calc(100% - 72px - var(--space-2));
+  min-width: 0;
+}
+
+.fields > .reason:first-child {
+  flex-basis: 100%;
+}
+
+.fields > button {
+  margin-left: auto;
+}
+
+.clear {
+  flex-basis: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 11px;
+}
+
+.why {
+  font-size: 11px;
+}
+
+.ok {
+  color: var(--sem-pass);
+  font-size: 12px;
+}
+
+.error {
+  color: var(--sem-fail);
+  font-size: 12px;
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "id": 5001,
+    "event": "labeled",
+    "created_at": "2026-10-24T12:00:30Z",
+    "actor": {
+      "login": "rsouza"
+    },
+    "label": {
+      "name": "factory:ready"
+    },
+    "issue": {
+      "number": 418
+    }
+  },
+  {
+    "id": 5002,
+    "event": "unlabeled",
+    "created_at": "2026-10-24T12:00:20Z",
+    "actor": {
+      "login": "mlima"
+    },
+    "label": {
+      "name": "factory:needs-human"
+    },
+    "issue": {
+      "number": 419
+    }
+  },
+  {
+    "id": 5003,
+    "event": "assigned",
+    "created_at": "2026-10-24T12:00:10Z",
+    "actor": {
+      "login": "rsouza"
+    },
+    "issue": {
+      "number": 418
+    }
+  },
+  {
+    "id": 4000,
+    "event": "labeled",
+    "created_at": "2026-10-22T09:00:00Z",
+    "actor": {
+      "login": "rsouza"
+    },
+    "label": {
+      "name": "factory:ready"
+    },
+    "issue": {
+      "number": 300
+    }
+  }
+]

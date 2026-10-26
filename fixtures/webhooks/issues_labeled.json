@@ -1,0 +1,21 @@
+{
+  "action": "labeled",
+  "issue": {
+    "number": 418,
+    "title": "Invoice due date",
+    "state": "open"
+  },
+  "label": {
+    "name": "factory:ready"
+  },
+  "sender": {
+    "login": "rsouza"
+  },
+  "repository": {
+    "full_name": "acme/atlas-api",
+    "name": "atlas-api",
+    "owner": {
+      "login": "acme"
+    }
+  }
+}

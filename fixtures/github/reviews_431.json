@@ -1,0 +1,26 @@
+[
+  {
+    "id": 60,
+    "state": "APPROVED",
+    "submitted_at": "2026-10-20T10:00:00Z",
+    "user": {
+      "login": "old"
+    }
+  },
+  {
+    "id": 70,
+    "state": "COMMENTED",
+    "submitted_at": "2026-10-24T12:00:33Z",
+    "user": {
+      "login": "someone"
+    }
+  },
+  {
+    "id": 77,
+    "state": "CHANGES_REQUESTED",
+    "submitted_at": "2026-10-24T12:00:35Z",
+    "user": {
+      "login": "mlima"
+    }
+  }
+]

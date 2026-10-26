@@ -1,0 +1,17 @@
+**Blocked**: `{{ reason }}`{% if phase %} in phase `{{ phase }}`{% endif %}. {{ summary | nomention }}
+{% if command %}
+
+Evidence: `{{ command }}` exited with code {{ exit_code }}.
+{% endif %}
+{% if output_tail %}
+
+<details><summary>Last output</summary>
+
+```text
+{{ output_tail }}
+```
+
+</details>
+{% endif %}
+
+{{ next_step }}

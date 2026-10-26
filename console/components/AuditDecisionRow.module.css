@@ -1,0 +1,41 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.choice {
+  display: flex;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 12px;
+}
+
+.reason {
+  flex: 1;
+  min-width: 200px;
+}
+
+.note {
+  font-size: 11px;
+}
+
+.error {
+  color: var(--sem-fail);
+  font-size: 12px;
+}
+
+.done {
+  margin: 0;
+  color: var(--sem-pass);
+  font-size: 12.5px;
+}

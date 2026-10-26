@@ -1,0 +1,16 @@
+{
+  "number": 418,
+  "title": "Invoice due date",
+  "state": "open",
+  "user": {
+    "login": "rsouza"
+  },
+  "author_association": "MEMBER",
+  "labels": [
+    {
+      "name": "factory:ready"
+    }
+  ],
+  "body": "## Outcome\nInvoices expose a due date.\n\n## Scope\nsrc/billing/invoice.py\n\n## Non-goals\nCaching.\n\n## Acceptance criteria\n1. WHEN an invoice is read THE SYSTEM SHALL return due_date.\n\n## Holdout\ntests/acceptance/test_invoice_due_date_holdout.py::test_due_date",
+  "created_at": "2026-10-23T13:00:00Z"
+}

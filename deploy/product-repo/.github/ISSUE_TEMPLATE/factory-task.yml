@@ -1,0 +1,46 @@
+name: Factory task
+description: An issue the factory may build once a user with write access adds factory:ready
+title: "[task] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill every section. Write the holdout acceptance tests for your criteria under
+        `tests/acceptance/` and list their ids under Holdout before you add `factory:ready`.
+        The planner sees this issue as data; the builder never sees it and works from the spec.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What is true when this is done, in one or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: The files or modules the change may touch, one per line.
+    validations:
+      required: true
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Non-goals
+      description: What this task must not do, even if it looks related.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      description: "Numbered. Each in the form: WHEN <condition> THE SYSTEM SHALL <behaviour>."
+    validations:
+      required: true
+  - type: textarea
+    id: holdout
+    attributes:
+      label: Holdout
+      description: "Holdout test ids, one per line: tests/acceptance/test_<name>.py::test_<case>"
+    validations:
+      required: true

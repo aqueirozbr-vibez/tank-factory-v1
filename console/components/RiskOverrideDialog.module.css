@@ -1,0 +1,48 @@
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(520px, calc(100vw - 32px));
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.choices {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  font-size: 12px;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-muted);
+}
+
+.option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 12.5px;
+}
+
+.error {
+  margin: 0;
+  color: var(--sem-fail);
+  font-size: 12.5px;
+}

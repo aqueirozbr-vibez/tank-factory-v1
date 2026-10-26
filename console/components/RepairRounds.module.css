@@ -1,0 +1,38 @@
+.repairs {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.round {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: var(--row-height);
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 13px;
+}
+
+.gates {
+  font-size: 11px;
+}
+
+.cap {
+  color: var(--sem-warn);
+  font-size: 12px;
+}

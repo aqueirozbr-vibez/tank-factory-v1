@@ -1,0 +1,1 @@
+`factory:plan-approved` from @rsouza was recorded and ignored: this task is `risk:governed` and @rsouza is not a CODEOWNER of `src/billing/invoice.py` (@mlima) (PRD Capability 2). The label was removed so a valid approver can add it.

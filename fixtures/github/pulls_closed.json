@@ -1,0 +1,48 @@
+[
+  {
+    "number": 431,
+    "state": "closed",
+    "merged_at": "2026-10-24T12:00:40Z",
+    "merge_commit_sha": "cccccccccccccccccccccccccccccccccccccccc",
+    "head": {
+      "ref": "agent/418",
+      "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "base": {
+      "ref": "main"
+    },
+    "merged_by": {
+      "login": "rsouza"
+    }
+  },
+  {
+    "number": 300,
+    "state": "closed",
+    "merged_at": null,
+    "merge_commit_sha": null,
+    "head": {
+      "ref": "agent/300",
+      "sha": "9999999999999999999999999999999999999999"
+    },
+    "base": {
+      "ref": "main"
+    },
+    "merged_by": null
+  },
+  {
+    "number": 200,
+    "state": "closed",
+    "merged_at": "2026-10-24T11:59:00Z",
+    "merge_commit_sha": "8888888888888888888888888888888888888888",
+    "head": {
+      "ref": "feature/x",
+      "sha": "7777777777777777777777777777777777777777"
+    },
+    "base": {
+      "ref": "main"
+    },
+    "merged_by": {
+      "login": "dev"
+    }
+  }
+]

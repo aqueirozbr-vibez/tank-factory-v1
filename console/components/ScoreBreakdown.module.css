@@ -1,0 +1,57 @@
+.card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.rows th {
+  text-align: left;
+  font-weight: 500;
+}
+
+.rows td,
+.rows th {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.unscoped {
+  margin: 0;
+}
+
+.equation {
+  margin: 0;
+  padding: var(--space-3);
+  border: 1px solid var(--color-divider);
+  white-space: pre-wrap;
+}
+
+.outcome {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.override,
+.score {
+  margin: 0;
+  font-size: 12px;
+}

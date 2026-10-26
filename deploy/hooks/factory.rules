@@ -1,0 +1,55 @@
+# The factory's execpolicy rules (TRD §7.3): the Codex counterpart of the PreToolUse
+# hook. Installed by the orchestrator into $CODEX_HOME/rules/factory.rules; the sandbox
+# (workspace-write with network off; read-only for the reviewer) and the post-run diff
+# remain the enforcement for what a prefix rule cannot see.
+
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "forbidden",
+    justification = "git push is not allowed; the orchestrator pushes the branch after the gates",
+)
+prefix_rule(
+    pattern = ["git", "commit"],
+    decision = "forbidden",
+    justification = "git commit is not allowed; the orchestrator commits with your message",
+)
+prefix_rule(
+    pattern = ["gh"],
+    decision = "forbidden",
+    justification = "gh is not available to agents; the orchestrator opens the pull request",
+)
+prefix_rule(
+    pattern = ["curl"],
+    decision = "forbidden",
+    justification = "curl is not available to agents; a task reaches only the model proxy",
+)
+prefix_rule(
+    pattern = ["wget"],
+    decision = "forbidden",
+    justification = "wget is not available to agents; a task reaches only the model proxy",
+)
+prefix_rule(
+    pattern = ["rm", ["-rf", "-fr", "-Rf", "-fR", "-rF", "-Fr"]],
+    decision = "forbidden",
+    justification = "rm -rf is not allowed; delete named files",
+)
+prefix_rule(
+    pattern = ["rm", "-r", "-f"],
+    decision = "forbidden",
+    justification = "rm -rf is not allowed; delete named files",
+)
+prefix_rule(
+    pattern = ["rm", "-f", "-r"],
+    decision = "forbidden",
+    justification = "rm -rf is not allowed; delete named files",
+)
+prefix_rule(
+    pattern = ["rm", "--recursive", "--force"],
+    decision = "forbidden",
+    justification = "rm -rf is not allowed; delete named files",
+)
+prefix_rule(
+    pattern = ["rm", "--force", "--recursive"],
+    decision = "forbidden",
+    justification = "rm -rf is not allowed; delete named files",
+)

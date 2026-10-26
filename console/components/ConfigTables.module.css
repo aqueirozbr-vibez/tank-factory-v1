@@ -1,0 +1,67 @@
+.section {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.note {
+  margin: 0;
+  font-size: 12.5px;
+}
+
+.table th,
+.table td {
+  font-size: 12.5px;
+  vertical-align: top;
+}
+
+.num {
+  text-align: right !important;
+}
+
+.instruments {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.summary {
+  cursor: pointer;
+  min-height: 28px;
+  line-height: 28px;
+  font-size: 13px;
+}
+
+.yaml {
+  margin: 0 0 var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--color-divider);
+  white-space: pre-wrap;
+  font-size: 12px;
+  max-height: 420px;
+  overflow: auto;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  font-size: 12.5px;
+}
+
+.facts dt {
+  color: var(--color-text-muted);
+}
+
+.facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}

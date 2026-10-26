@@ -1,0 +1,16 @@
+"""The slice of GitHub that intake needs, as a protocol so tests can fake it."""
+
+from collections.abc import Sequence
+from typing import Any, Protocol
+
+
+class GitHubPort(Protocol):
+    async def collaborator_permission(self, login: str, *, task_id: str) -> str: ...
+
+    async def get_issue(self, number: int, *, task_id: str) -> dict[str, Any]: ...
+
+    async def create_comment(self, number: int, body: str, *, task_id: str) -> int: ...
+
+    async def add_labels(self, number: int, labels: Sequence[str], *, task_id: str) -> None: ...
+
+    async def remove_label(self, number: int, label: str, *, task_id: str) -> bool: ...

@@ -1,0 +1,51 @@
+.card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  font-size: 12.5px;
+}
+
+.facts dt {
+  color: var(--color-text-muted);
+}
+
+.facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.table th,
+.table td {
+  font-size: 12px;
+}
+
+.caption {
+  caption-side: top;
+  text-align: left;
+  padding: var(--space-1) 0;
+  font-size: 11px;
+}
+
+.num {
+  text-align: right !important;
+}
+
+.reason {
+  margin: 0;
+  font-size: 12px;
+}

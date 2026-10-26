@@ -1,0 +1,51 @@
+.errors {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid color-mix(in srgb, var(--sem-warn) 38%, transparent);
+  background: color-mix(in srgb, var(--sem-warn) 9%, transparent);
+  color: var(--sem-warn);
+  font-size: 12.5px;
+}
+
+/* The kill-switch row above the tiles; the tiles' corner marks reach 6 px out. */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+/* The same five columns and gutter as the KPI row, so the rail's edges line up with the fifth
+   tile and the main column ends where the fourth does. */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.main {
+  grid-column: 1 / span 4;
+  display: grid;
+  gap: var(--space-8);
+  min-width: 0;
+}
+
+.rail {
+  grid-column: 5;
+  display: grid;
+  gap: var(--space-6);
+  align-content: start;
+  min-width: 0;
+}
+
+@media (max-width: 1280px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .main,
+  .rail {
+    grid-column: 1;
+  }
+}

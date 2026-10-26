@@ -1,0 +1,133 @@
+{
+  "name": "fixture-24",
+  "repo": "demo",
+  "classes": [
+    "bug",
+    "test",
+    "docs",
+    "feature"
+  ],
+  "note": "Closed issues replayed on eval/scratch; each item takes its body and scripts from the seed task `seed` under its own issue number (PRD Capability 5, TRD section 11).",
+  "items": [
+    {
+      "issue": 101,
+      "class": "feature",
+      "seed": 1
+    },
+    {
+      "issue": 102,
+      "class": "feature",
+      "seed": 2
+    },
+    {
+      "issue": 103,
+      "class": "feature",
+      "seed": 3
+    },
+    {
+      "issue": 104,
+      "class": "feature",
+      "seed": 4
+    },
+    {
+      "issue": 105,
+      "class": "feature",
+      "seed": 5
+    },
+    {
+      "issue": 106,
+      "class": "feature",
+      "seed": 6
+    },
+    {
+      "issue": 107,
+      "class": "feature",
+      "seed": 7
+    },
+    {
+      "issue": 108,
+      "class": "feature",
+      "seed": 8
+    },
+    {
+      "issue": 109,
+      "class": "bug",
+      "seed": 9
+    },
+    {
+      "issue": 110,
+      "class": "bug",
+      "seed": 10
+    },
+    {
+      "issue": 111,
+      "class": "bug",
+      "seed": 1
+    },
+    {
+      "issue": 112,
+      "class": "bug",
+      "seed": 2
+    },
+    {
+      "issue": 113,
+      "class": "bug",
+      "seed": 3
+    },
+    {
+      "issue": 114,
+      "class": "bug",
+      "seed": 4
+    },
+    {
+      "issue": 115,
+      "class": "bug",
+      "seed": 5
+    },
+    {
+      "issue": 116,
+      "class": "bug",
+      "seed": 6
+    },
+    {
+      "issue": 117,
+      "class": "test",
+      "seed": 7
+    },
+    {
+      "issue": 118,
+      "class": "test",
+      "seed": 8
+    },
+    {
+      "issue": 119,
+      "class": "test",
+      "seed": 9
+    },
+    {
+      "issue": 120,
+      "class": "test",
+      "seed": 10
+    },
+    {
+      "issue": 121,
+      "class": "docs",
+      "seed": 1
+    },
+    {
+      "issue": 122,
+      "class": "docs",
+      "seed": 2
+    },
+    {
+      "issue": 123,
+      "class": "docs",
+      "seed": 3
+    },
+    {
+      "issue": 124,
+      "class": "docs",
+      "seed": 4
+    }
+  ]
+}
